@@ -1,0 +1,22 @@
+@import "/src/styles/abstracts/mixins";
+
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  &__heading {
+    font-size: 4rem;
+    @include customGradientTextColor(#045de9, #09c6f9);
+  }
+  //   background-color: #045de9;
+  // background-image: linear-gradient(315deg, #045de9 0%, #09c6f9 74%);
+  &__button {
+    width: 10rem;
+    padding: 1rem 1rem;
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+  }
+}

@@ -1,0 +1,17 @@
+.calendar {
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__user {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  &__date {
+    text-align: center;
+  }
+}

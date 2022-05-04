@@ -1,0 +1,3 @@
+<nb-card size="large" class="calendar" *ngIf="currentPerson$ | async as currentPerson">
+<app-booking-body [currentPerson]="currentPerson"></app-booking-body>
+</nb-card>

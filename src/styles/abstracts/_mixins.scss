@@ -1,0 +1,94 @@
+@mixin customGradientColor($col1, $col2, $opacity) {
+  background-image: linear-gradient(to right bottom, rgba($col1, $opacity), rgba($col2, $opacity));
+}
+
+@mixin customGradientTextColor($col1, $col2) {
+  display: inline-block;
+  background-image: linear-gradient(to right, $col1, $col2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin borderRadiusRightSide($size) {
+  border-top-right-radius: $size;
+  border-bottom-right-radius: $size;
+}
+
+//! FLEX MIXINS \\\
+@mixin flexGap($gap) {
+  display: flex;
+  gap: $gap;
+}
+
+@mixin flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+@mixin flexColumnGap($gap) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flexAlignJustifyCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+//! PADDING MIXINS \\\
+
+@mixin paddingSides($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+//! PADDING MIXINS \\\
+@mixin widthAndHeigh($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+//! MEDIA MIXINS \\\
+/*
+
+* xs = 0 px
+* sm = 576 px
+* md = 768 px
+* lg = 992 px
+* xl = 1200 px
+
+*/
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == xs {
+    @media (max-width: 0px) {
+      @content;
+    }
+  }
+  @if $breakpoint == sm {
+    @media (max-width: 36em) {
+      @content;
+    }
+  }
+  @if $breakpoint == md {
+    @media (max-width: 48em) {
+      @content;
+    }
+  }
+  @if $breakpoint == lg {
+    @media (max-width: 62em) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl {
+    @media (max-width: 75em) {
+      @content;
+    }
+  }
+  @if $breakpoint == xl-min {
+    @media (max-width: 75.1em) {
+      @content;
+    }
+  }
+}

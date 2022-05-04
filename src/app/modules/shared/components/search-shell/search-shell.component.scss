@@ -1,0 +1,19 @@
+.search {
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  &__item {
+    display: flex;
+    gap: 0.2rem;
+    justify-content: space-between;
+  }
+  nb-card &__button {
+    font-size: 0.6rem ;
+  }
+}
+
+nb-card {
+  margin-bottom: 0;
+}

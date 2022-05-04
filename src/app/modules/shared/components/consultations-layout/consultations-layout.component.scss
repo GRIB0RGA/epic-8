@@ -1,0 +1,67 @@
+:host {
+  display: grid;
+  display: flex;
+  gap: 1rem;
+}
+
+.consultation {
+  &__card {
+    &--upcoming {
+      cursor: pointer;
+      width: 100%;
+    }
+    &--popup {
+      width: 30%;
+    }
+  }
+  &__item {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.popup {
+  &__header-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    position: relative;
+  }
+  &__header {
+    font-size: 1rem;
+  }
+  &__status {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    padding: 0.05rem 0.4rem;
+    border-radius: 2px;
+    font-weight: 700;
+    &--CANCELLED {
+      background-color: #990000;
+      background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
+    }
+    &--CONFIRMED {
+      background-color: #00b712;
+      background-image: linear-gradient(315deg, #00b712 0%, #5bff1591 74%);
+    }
+  }
+  &__time {
+    font-size: 0.8rem;
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  &__button {
+    font-size: 0.7rem !important;
+  }
+  &__close {
+    color: #fff;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}

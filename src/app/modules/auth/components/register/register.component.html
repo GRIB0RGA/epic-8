@@ -1,0 +1,136 @@
+<nb-layout>
+  <nb-layout-column class="colored-column-basic center no-overflow">
+    <nb-card class="auth">
+      <nb-card-header>
+        <app-go-back></app-go-back>
+      </nb-card-header>
+      <nb-card-body class="auth__body auth__body--register">
+        <h2 class="auth__heading">Sign Up</h2>
+
+        <ng-container *ngIf="registerForm">
+          <form class="auth__form" [formGroup]="registerForm">
+            <div class="auth__credentials">
+              <nb-form-field class="auth__field">
+                <label class="auth__label" for="firstName" *ngIf="localGetInput(InputTypes.Firstname)?.dirty"
+                  >Firstname</label
+                >
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  placeholder="Firstname"
+                  id="firstName"
+                  (keypress)="passLettersOnly($event)"
+                  [status]="getStatus(InputTypes.Firstname)"
+                  [formControlName]="InputTypes.Firstname" />
+              </nb-form-field>
+
+              <nb-form-field class="auth__field">
+                <label class="auth__label" for="lastname" *ngIf="localGetInput(InputTypes.Lastname)?.dirty"
+                  >Lastname</label
+                >
+                <input
+                  type="text"
+                  nbInput
+                  fullWidth
+                  placeholder="Lastname"
+                  id="lastname"
+                  (keypress)="passLettersOnly($event)"
+                  [status]="getStatus(InputTypes.Lastname)"
+                  [formControlName]="InputTypes.Lastname" />
+              </nb-form-field>
+            </div>
+
+            <nb-form-field class="auth__field">
+              <label class="auth__label" for="email" *ngIf="localGetInput(InputTypes.Email)?.dirty"
+                >Email address</label
+              >
+              <input
+                type="email"
+                nbInput
+                fullWidth
+                placeholder="Email address"
+                id="email"
+                [status]="getStatus(InputTypes.Email)"
+                [formControlName]="InputTypes.Email" />
+              <span class="auth__error" *ngIf="emailErrorMessage$ | async as emailErrorMessage">{{
+                emailErrorMessage
+              }}</span>
+            </nb-form-field>
+
+            <ng-container formGroupName="passwordGroup">
+              <nb-form-field class="auth__field">
+                <label
+                  class="auth__label"
+                  for="password"
+                  *ngIf="localGetInput('passwordGroup')?.get(InputTypes.Password)?.dirty"
+                  >Password</label
+                >
+                <input
+                  nbInput
+                  fullWidth
+                  placeholder="Password"
+                  id="password"
+                  autocomplete="on"
+                  [type]="getInputType()"
+                  [status]="getStatus(InputTypes.Password)"
+                  [formControlName]="InputTypes.Password" />
+
+                <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                  <nb-icon [icon]="getIconState()" pack="eva" [attr.aria-label]="getPasswordState()"> </nb-icon>
+                </button>
+
+                <span class="auth__error" *ngIf="passwordErrorMessage$ | async as passwordErrorMessage">{{
+                  passwordErrorMessage
+                }}</span>
+              </nb-form-field>
+
+              <nb-form-field class="auth__field">
+                <label
+                  class="auth__label"
+                  for="password-confirm"
+                  *ngIf="localGetInput(InputTypes.RepeatePassword)?.dirty"
+                  >Repeat password</label
+                >
+                <input
+                  nbInput
+                  fullWidth
+                  placeholder="Repeat password"
+                  id="password-confirm"
+                  autocomplete="on"
+                  [type]="getInputType()"
+                  [status]="getStatus(InputTypes.RepeatePassword)"
+                  [formControlName]="InputTypes.RepeatePassword" />
+
+                <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                  <nb-icon [icon]="getIconState()" pack="eva" [attr.aria-label]="getPasswordState()"> </nb-icon>
+                </button>
+                <span class="auth__error" *ngIf="passwordGroupErrorMessage$ | async as passwordGroupErrorMessage">{{
+                  passwordGroupErrorMessage
+                }}</span>
+              </nb-form-field>
+            </ng-container>
+
+            <div class="auth__radio">
+              <label for="role" class="auth__radio--label">Role</label>
+              <nb-radio-group [formControlName]="InputTypes.Role" [status]="getStatus(InputTypes.Role)">
+                <nb-radio *ngFor="let option of options" [value]="option.value">
+                  {{ option.label }}
+                </nb-radio>
+              </nb-radio-group>
+            </div>
+
+            <button
+              nbButton
+              fullWidth
+              status="primary"
+              [disabled]="!emailIsTaken || !registerForm?.valid"
+              (click)="onSubmit()">
+              Sign Up
+            </button>
+          </form>
+        </ng-container>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

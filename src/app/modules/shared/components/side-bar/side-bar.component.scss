@@ -1,0 +1,71 @@
+@import '/src/styles/abstracts/mixins';
+:host {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sidebar {
+  &__button {
+    @include widthAndHeigh(100%, 4rem);
+    @include flexAlignJustifyCenter;
+    padding: 1rem 1rem;
+    @include borderRadiusRightSide(5px);
+
+    background: linear-gradient(to right, #36f 49%, #222b45 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+
+    transition: all 0.3s ease-out;
+    &--1 {
+      grid-area: 1/1/2/2;
+    }
+    &--2 {
+      grid-area: 2/1/3/2;
+    }
+    &--3 {
+      grid-area: 3/1/4/2;
+    }
+    &--4 {
+      grid-area: 4/1/5/2;
+    }
+    &--active {
+      background-position: left bottom;
+      & span,
+      & fa-icon {
+        color: #fff;
+      }
+    }
+  }
+
+  &__text {
+    font-size: 0.8rem;
+    text-align: center;
+    color: white;
+    font-weight: 700;
+    transition: all 0.3s ease-out;
+    display: block;
+
+    &:hover {
+      color: #36f;
+    }
+
+    @include respond(lg) {
+      display: none;
+    }
+  }
+  &__icon {
+    display: none;
+    &:hover {
+      color: #36f;
+    }
+    @include respond(lg) {
+      display: block;
+    }
+
+    color: white;
+  }
+}
+
+.bla {
+  background-position: left bottom;
+}

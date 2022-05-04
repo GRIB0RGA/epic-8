@@ -1,0 +1,50 @@
+<button
+  class="sidebar__button sidebar__button--1"
+  [routerLink]="sharedRoutes.Dashboard"
+  [routerLinkActive]="activeClass">
+  <span class="sidebar__text">Dashboard</span>
+  <fa-icon [icon]="faHome" class="sidebar__icon"></fa-icon>
+</button>
+
+<button
+  class="sidebar__button sidebar__button--3"
+  [routerLink]="sharedRoutes.UpcomingConsultations"
+  [routerLinkActive]="activeClass">
+  <span class="sidebar__text">Upcoming Consultations</span>
+  <fa-icon [icon]="faCalendarDays" class="sidebar__icon"></fa-icon>
+</button>
+
+<ng-container *ngIf="role === roles.Patient">
+  <button
+    class="sidebar__button sidebar__button--2"
+    [routerLink]="patientRoutes.Search"
+    [routerLinkActive]="activeClass"
+    [ngClass]="{ 'sidebar__button--active': makeActive() }">
+    <span class="sidebar__text">Doctors</span>
+    <fa-icon [icon]="faUserNurse" class="sidebar__icon"></fa-icon>
+  </button>
+  <button
+    class="sidebar__button sidebar__button--4"
+    [routerLink]="patientRoutes.HealthRecords"
+    [routerLinkActive]="activeClass">
+    <span class="sidebar__text">Health Records</span>
+    <fa-icon [icon]="faBookMedical" class="sidebar__icon"></fa-icon>
+  </button>
+</ng-container>
+
+<ng-container *ngIf="role === roles.Doctor">
+  <button
+    class="sidebar__button sidebar__button--2"
+    [routerLink]="doctorRoutes.ConsultationRequests"
+    [routerLinkActive]="activeClass">
+    <span class="sidebar__text">Requests</span>
+    <fa-icon [icon]="faCalendarCheck" class="sidebar__icon"></fa-icon>
+  </button>
+  <button
+    class="sidebar__button sidebar__button--4"
+    [routerLink]="doctorRoutes.Patients"
+    [routerLinkActive]="activeClass">
+    <span class="sidebar__text">Patients</span>
+    <fa-icon [icon]="faHospitalUser" class="sidebar__icon"></fa-icon>
+  </button>
+</ng-container>

@@ -1,0 +1,74 @@
+.auth {
+  width: 40%;
+
+  @include respond(xl) {
+    width: 60%;
+  }
+  @include respond(md) {
+    width: 70vw;
+  }
+  @include respond(sm) {
+    width: 90vw;
+  }
+  .nb-theme-dark &__body {
+    &--login {
+      @include paddingSides(20%);
+      @include respond(sm) {
+        @include paddingSides(10%);
+      }
+    }
+    &--register {
+      @include paddingSides(10%);
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    padding-bottom: 2rem;
+  }
+  &__credentials {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  &__field {
+    max-width: 100%;
+    position: relative;
+  }
+  &__label {
+    padding-left: 0.2rem;
+    position: absolute;
+    top: -0.1rem;
+    left: 0;
+    transform: translateY(-100%);
+    color: rgba(255, 255, 255, 0.507);
+  }
+  &__error {
+    padding-left: 0.2rem;
+    position: absolute;
+    bottom: -0.5rem;
+    right: 0;
+    transform: translateY(100%);
+    color: #ff3d71;
+  }
+  &__heading {
+    text-align: center;
+    padding-bottom: 4rem;
+  }
+  &__radio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    &--label {
+      color: rgba(255, 255, 255, 0.507);
+    }
+  }
+
+  &__link {
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+}

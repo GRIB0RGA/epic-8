@@ -1,0 +1,50 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  @include respond(lg) {
+    font-size: 80%;
+  }
+  @include respond(sm) {
+    font-size: 55%;
+  }
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+fa-icon {
+  cursor: pointer;
+  &:hover {
+    color: #36f;
+  }
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #101426;
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px #192038 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.nb-theme-dark [nbInput].shape-rectangle {
+  border-radius: 0;
+}

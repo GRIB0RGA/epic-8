@@ -1,0 +1,59 @@
+<nb-layout>
+  <nb-layout-column class="colored-column-basic center">
+    <nb-card class="auth">
+      <nb-card-header>
+        <app-go-back></app-go-back>
+      </nb-card-header>
+
+      <nb-card-body class="auth__body auth__body--login">
+        <h2 class="auth__heading">Sign In</h2>
+
+        <ng-container *ngIf="loginForm">
+          <form class="auth__form" [formGroup]="loginForm">
+            <nb-form-field class="auth__field">
+              <label class="auth__label" for="email" *ngIf="loginForm.get(inputTypes.EMAIL)?.dirty"
+                >Email address:</label
+              >
+              <input
+                type="email"
+                nbInput
+                fullWidth
+                status="basic"
+                placeholder="Email address"
+                id="email"
+                [formControlName]="inputTypes.EMAIL" />
+              <span class="auth__error" *ngIf="emailErrorMessage$ | async as emailErrorMessage">{{
+                emailErrorMessage
+              }}</span>
+            </nb-form-field>
+
+            <nb-form-field class="auth__field">
+              <label class="auth__label" for="password" *ngIf="loginForm.get(inputTypes.PASSWORD)?.dirty"
+                >Password:</label
+              >
+              <input
+                nbInput
+                fullWidth
+                status="basic"
+                placeholder="Password"
+                id="password"
+                autocomplete="on"
+                [type]="getInputType()"
+                [formControlName]="inputTypes.PASSWORD" />
+              <button nbSuffix nbButton ghost (click)="toggleShowPassword()">
+                <nb-icon [icon]="getIconState()" pack="eva" [attr.aria-label]="getPasswordState()"> </nb-icon>
+              </button>
+              <span class="auth__error">{{ passwordErrorMessage }}</span>
+            </nb-form-field>
+
+            <button nbButton fullWidth status="primary" [disabled]="!loginForm.valid" (click)="onLogin()">
+              Sign In
+            </button>
+          </form>
+        </ng-container>
+
+        <p class="auth__link">Don't have an account? <a routerLink="/register">Sign up</a></p>
+      </nb-card-body>
+    </nb-card>
+  </nb-layout-column>
+</nb-layout>

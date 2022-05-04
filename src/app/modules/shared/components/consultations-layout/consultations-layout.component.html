@@ -1,0 +1,46 @@
+<nb-card size="large" class="consultation__card consultation__card--upcoming">
+  <nb-card-header
+    ><h5>{{ header }}</h5>
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item
+      class="consultation__item"
+      *ngFor="let booking of confirmedBookings$ | async"
+      
+     >
+      <!-- (click)="showPopup(booking)" -->
+    
+        <nb-user [name]="getName(booking)" [title]="getRole(booking)" size="large"> </nb-user>
+      
+        <!-- <p>{{ booking.startTime | date: DATE_FORMAT }}</p> -->
+    
+    </nb-list-item>
+  </nb-list>
+</nb-card>
+
+<nb-card size="small" class="consultation__card consultation__card--popup" *ngIf="userPopup">
+  <nb-card-header class="popup__header-group">
+    <button class="popup__close">
+      <fa-icon [icon]="faX" class="go-back__icon" (click)="closePopup()"></fa-icon>
+    </button>
+
+    <h6 class="popup__header">{{ detailHeader }}</h6>
+    <p class="popup__time">{{ userPopup?.startTime | date: DATE_FORMAT }}</p>
+    <span class="popup__status popup__status--{{ userPopup.status }}">{{ userPopup.status }}</span>
+  </nb-card-header>
+  <nb-card-body class="popup__body">
+    <ng-container *ngIf="userPopup | getOcupation | async as ocupation">
+      <nb-user [name]="userPopup | oppositeRoleCredentials" [title]="ocupation" size="large"> </nb-user>
+      <button
+        nbButton
+        hero
+        status="danger"
+        class="popup__button"
+        size="small"
+        (click)="cancelBooking()"
+        *ngIf="currentRoute === sharedRoutes.UpcomingConsultations">
+        Cancel Booking
+      </button>
+    </ng-container>
+  </nb-card-body>
+</nb-card>

@@ -1,0 +1,23 @@
+@import '/src/styles/abstracts/mixins';
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.card {
+  margin-bottom: 0;
+  transition: all 0.2s;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.02);
+  }
+  &__body {
+    @include flexColumnGap(1rem);
+    justify-content: center;
+    text-align: center;
+  }
+}

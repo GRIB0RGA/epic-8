@@ -1,0 +1,28 @@
+<nb-card size="large" class="consultation__card consultation__card--upcoming">
+  <nb-card-header class="search__input-group">
+    <input
+      type="text"
+      nbInput
+      fullWidth
+      status="basic"
+      class="search__button"
+      placeholder="Firstname"
+      [(ngModel)]="firstName" />
+    <input
+      type="text"
+      nbInput
+      fullWidth
+      status="basic"
+      class="search__button"
+      placeholder="Lastname"
+      [(ngModel)]="lastName" />
+    <button nbButton hero status="primary" (click)="search()">Search</button>
+  </nb-card-header>
+  <nb-list>
+    <nb-list-item class="search__item" *ngFor="let result of searchResults$ | async">
+      <nb-user [name]="getCredentials(result.firstName, result.lastName)" [title]="getTitle(result)" size="large">
+      </nb-user>
+      <button nbButton hero status="primary" class="search__button" (click)="book(result)">book</button>
+    </nb-list-item>
+  </nb-list>
+</nb-card>

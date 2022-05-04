@@ -1,0 +1,19 @@
+<nb-card-header>Consultation requests</nb-card-header>
+<nb-list class="consultation__body">
+  <nb-list-item class="consultation__card" *ngFor="let consultationRequest of consultationRequests$ | async">
+    <p class="consultation__time">
+      {{ consultationRequest.startTime | date: DATE_FORMAT }}
+    </p>
+    <div class="consultation__right">
+      <p class="consultation__credentials">{{ consultationRequest | oppositeRoleCredentials }}</p>
+      <div class="consultation__btn-group">
+        <button nbButton hero status="primary" (click)="updateBooking(consultationRequest.id, bookingStatus.CONFIRMED)">
+          Accept
+        </button>
+        <button nbButton hero status="danger" (click)="updateBooking(consultationRequest.id, bookingStatus.DECLINED)">
+          Reject
+        </button>
+      </div>
+    </div>
+  </nb-list-item>
+</nb-list>

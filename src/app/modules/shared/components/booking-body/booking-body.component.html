@@ -1,0 +1,26 @@
+<nb-card-body class="calendar__body">
+  <div class="calendar__user">
+    <nb-user
+      name="{{ currentPerson?.firstName + ' ' + currentPerson?.lastName }}"
+      [title]="getTitle(currentPerson)"
+      size="large">
+    </nb-user>
+    <button nbButton hero status="primary" (click)="book()">Book</button>
+  </div>
+  <input
+    class="calendar__time"
+    nbInput
+    placeholder="Pick Date"
+    [status]="inputStatus"
+    [nbDatepicker]="dateTimePicker"
+    [(ngModel)]="bookingDate" />
+
+  <nb-date-timepicker
+    NbDatepicker="true"
+    #dateTimePicker
+    singleColumn
+    (dateTimeChange)="onDateChange($event)"
+    [step]="30"
+    [min]="currentDate">
+  </nb-date-timepicker>
+</nb-card-body>

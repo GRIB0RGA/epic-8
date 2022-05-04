@@ -1,0 +1,39 @@
+@import '/src/styles/abstracts/mixins';
+
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  @include respond(lg) {
+    @include flexColumn;
+  }
+}
+nb-card {
+  margin-bottom: 0;
+}
+.card {
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &__requests {
+    grid-area: 1/1/3/2;
+  }
+  &__upcomings {
+    grid-area: 1/2/2/3;
+  }
+  &__patients {
+    grid-area: 2/2/3/3;
+  }
+
+  &__link {
+    @include flexAlignJustifyCenter;
+  }
+  &__text {
+    text-align: center;
+  }
+}

@@ -1,0 +1,60 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NbEvaIconsModule } from '@nebular/eva-icons';
+import {
+  NbThemeModule,
+  NbLayoutModule,
+  NbSidebarModule,
+  NbButtonModule,
+  NbInputModule,
+  NbCardModule,
+  NbIconModule,
+  NbFormFieldModule,
+  NbRadioModule,
+  NbListModule,
+  NbUserModule,
+  NbDatepicker,
+  NbDatepickerModule,
+  NbCalendarModule,
+  NbTimepickerModule,
+} from '@nebular/theme';
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    NbThemeModule.forRoot({ name: 'dark' }),
+    NbSidebarModule.forRoot(),
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbInputModule,
+    NbCardModule,
+    NbIconModule,
+    NbFormFieldModule,
+    NbRadioModule,
+    NbListModule,
+    NbUserModule,
+    NbDatepickerModule.forRoot(),
+    NbCalendarModule,
+    NbTimepickerModule.forRoot(),
+  ],
+  exports: [
+    CommonModule,
+    NbThemeModule,
+    NbSidebarModule,
+    NbLayoutModule,
+    NbEvaIconsModule,
+    NbButtonModule,
+    NbInputModule,
+    NbCardModule,
+    NbIconModule,
+    NbFormFieldModule,
+    NbRadioModule,
+    NbListModule,
+    NbUserModule,
+    NbDatepickerModule,
+    NbCalendarModule,
+    NbTimepickerModule,
+  ],
+})
+export class NebularModule {}

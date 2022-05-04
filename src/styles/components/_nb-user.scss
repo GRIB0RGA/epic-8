@@ -1,0 +1,16 @@
+.nb-theme-dark nb-user.size-large .initials {
+  @include customGradientTextColor(#06bcfb, #4884ee);
+
+
+  //   color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 1px solid #bdd4e7;
+}
+
+// .nb-theme-dark nb-user.size-large .user-title {
+// //   font-size: 0.9rem;
+// //   margin-bottom: 0.5rem;
+// //   color: black;
+// //   font-weight: 500;
+// }

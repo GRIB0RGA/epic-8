@@ -1,0 +1,26 @@
+@import '/src/styles/abstracts/mixins';
+:host {
+  width: 100%;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  &__logo {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  &__left {
+    @include flexGap(1rem);
+    align-items: center;
+  }
+  &__logout {
+    color: #fff;
+    &:hover {
+      color: #36f;
+    }
+  }
+}
